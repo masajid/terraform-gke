@@ -1,0 +1,9 @@
+# Ignore variables with sensitive data
+variables.tf
+
+# Ignore service account file
+service-account.json
+
+# Ignore state files
+*.tfstate*
+.terraform/
