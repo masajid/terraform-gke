@@ -1,9 +1,9 @@
 provider "google" {
-  credentials = file("service-account.json")
+  version     = "~> 2.20"
+  credentials = file("terraform-service-account.json")
   project     = var.project
   region      = var.region
   zone        = var.zone
-  version     = "~> 2.20"
 }
 
 resource "google_container_cluster" "default" {
@@ -11,7 +11,7 @@ resource "google_container_cluster" "default" {
   description = "Masajid cluster"
 
   remove_default_node_pool = true
-  initial_node_count = var.initial_node_count
+  initial_node_count = var.initial_node_count # maybe not needed
 
   master_auth {
     username = ""
@@ -26,7 +26,7 @@ resource "google_container_cluster" "default" {
 resource "google_container_node_pool" "default" {
   name       = "${var.name}-node-pool"
   cluster    = google_container_cluster.default.name
-  node_count = 1
+  node_count = var.node_count
 
   node_config {
     preemptible  = true

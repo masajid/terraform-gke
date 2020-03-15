@@ -1,5 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "masajid-terraform"
+    bucket = "masajid-test-terraform"
+    prefix = "masajid-gke"
   }
 }
