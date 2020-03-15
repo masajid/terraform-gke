@@ -2,7 +2,7 @@
 variables.tf
 
 # Ignore service account file
-service-account.json
+*service-account.json
 
 # Ignore state files
 *.tfstate*
